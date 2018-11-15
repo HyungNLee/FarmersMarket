@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import DayList from './DayList';
 import ProduceList from './ProduceList';
 import bootstrap from '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const marketSchedule = [
   {
@@ -323,15 +325,12 @@ function App() {
     `}</style>
       <div className='jumbotron'>
         <h1>Avery's Organic Farm</h1>
+        <Link to="/">Home</Link> | <Link to="/produceList">Monthly Produce</Link>
       </div>
-      <div>
-        <div>
-          <DayList marketSchedule={marketSchedule} />
-        </div>
-        <div>
-          <ProduceList availableProduce={availableProduce} />
-        </div>
-      </div>
+      <Switch>
+        <Route exact path='/' render={props => (<DayList {...props} marketSchedule={marketSchedule} /> )} /> 
+        <Route path='/produceList' render={props => (<ProduceList {...props} availableProduce={availableProduce} /> )} /> 
+      </Switch>
     </div>
   );
 }
