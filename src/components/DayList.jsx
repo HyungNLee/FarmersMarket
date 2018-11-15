@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import Day from './Day';
+import PropTypes from 'prop-types';
 
 function DayList(props) {
   return (
     <div className='day-list'>
       <style jsx>{`
-        .day-list {
-          border: 1px solid black;
-        }
         .day-item { 
           display: grid;
           grid-template-columns: repeat(3,1fr);
@@ -26,5 +24,9 @@ function DayList(props) {
     </div>
   );
 }
+
+DayList.propTypes = {
+  marketSchedule: PropTypes.array.isRequired
+};
 
 export default DayList;
