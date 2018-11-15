@@ -32,6 +32,10 @@ module.exports = {
   module: {
     rules: [
         {
+          test: /\.css$/,
+          use: [ 'style-loader', 'css-loader' ]
+        },
+        {
           test: /\.jsx?$/,
           enforce: "pre",
           loader: "eslint-loader",
@@ -51,7 +55,8 @@ module.exports = {
               "react",
             ],
             plugins: [
-              "react-hot-loader/babel"
+              "react-hot-loader/babel",
+              "styled-jsx/babel"
             ]
           }
         }
